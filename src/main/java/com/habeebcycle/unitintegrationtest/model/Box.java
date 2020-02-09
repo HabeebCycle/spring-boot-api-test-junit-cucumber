@@ -39,10 +39,13 @@ public class Box {
         return this.treasures;
     }
 
-    public void removeAllSameTreasure(String treasure){
+    public boolean removeAllSameTreasure(String treasure){
+        boolean removed = false;
         while (this.treasures.contains(treasure)){
             removeTreasure(treasure);
+            removed = true;
         }
+        return removed;
     }
 
     public void emptyBox(){

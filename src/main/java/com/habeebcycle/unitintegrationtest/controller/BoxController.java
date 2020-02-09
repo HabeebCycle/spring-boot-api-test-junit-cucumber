@@ -27,9 +27,9 @@ public class BoxController {
         return box.getNumTreasure(treasure);
     }
 
-    @PostMapping("/box/{treasure}")
+    @PostMapping("/box")
     @ResponseStatus(HttpStatus.CREATED)
-    public void addTreasure(@PathVariable final String treasure) {
+    public void addTreasure(@RequestBody final String treasure) {
         box.addTreasure(treasure);
     }
 
@@ -39,11 +39,12 @@ public class BoxController {
     }
 
     @DeleteMapping("/box/all/{treasure}")
-    public void removeTreasures(@PathVariable String treasure){
-        box.removeAllSameTreasure(treasure);
+    public boolean removeTreasures(@PathVariable String treasure){
+        return box.removeAllSameTreasure(treasure);
     }
 
     @DeleteMapping("/box/all")
+    @ResponseStatus(HttpStatus.OK)
     public void removeEverything() {
         box.emptyBox();
     }
